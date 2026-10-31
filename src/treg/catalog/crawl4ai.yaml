@@ -1976,8 +1976,10 @@ endpoints:
     summary: 'The reviews Google Maps shows for one place, one row per review: stars, text, date, the reviewer, likes,
       the owner''s reply and the review''s own link. `place` is the place''s Google Maps link, its place id (ChIJ...)
       or its cid (the number in a maps?cid= link); `sort` is relevant (Google''s order) or newest; `limit` how many
-      reviews (default 5, up to 100), one price a call at any limit. About 1 to 3 s for a few reviews, 8 to 16 s for
-      100. A reply with fewer than asked and meta.partial true gives the rest when retried a little later. Columns:
+      reviews (default 5, up to 100), one price a call at any limit. Up to 8 reviews come from one page in 1 to 3 s;
+      more reads further pages, which Google paces (8 to 16 s for 100, longer when many callers read reviews at once),
+      so ask for 8 or fewer unless you need more. A reply with fewer than asked and meta.partial true gives the rest
+      when retried a little later. Columns:
       review_id, place_id, rating, text, date, author, likes, owner_reply, url.'
     body_allowlist: true
     input:
